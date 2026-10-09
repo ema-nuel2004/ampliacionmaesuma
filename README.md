@@ -25,20 +25,6 @@
 | `www/styles.css` | Estilo visual corporativo |
 | `data/diccionario.md` | Definiciones, límites y fuentes |
 
-## Publicación en GitHub
-
-Crea un repositorio vacío y **sube todo el contenido de esta carpeta a la raíz** (incluidas `.github/` y los archivos ocultos). Puedes hacerlo en github.com con **Add file → Upload files**. También puedes usar Git:
-
-```bash
-git init
-git add .
-git commit -m "Initial MAEs demand and capacity analytics"
-git branch -M main
-git remote add origin https://github.com/TU_USUARIO/maes-capacidad-analitica.git
-git push -u origin main
-```
-
-El sitio de GitHub almacena código, **no ejecuta Shiny automáticamente**. Para ofrecer una URL interactiva, publícalo en [shinyapps.io](https://www.shinyapps.io/) o en un servidor Shiny y vincula esa URL en el repositorio.
 
 ## Lógica de simulación
 
