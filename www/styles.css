@@ -1,0 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+body{background:#f4f7fa;color:#12233f} .navbar{background:#12233f!important;box-shadow:0 10px 22px #12233f16}
+.navbar .navbar-brand,.navbar .nav-link{color:#fff!important}.navbar .nav-link.active{color:#9de2dc!important}
+.brand-light{font-weight:400;opacity:.83}.top-note{padding:10px 24px;background:#dbe8ed;color:#23415d;text-align:center;letter-spacing:1px;font-size:10px;font-weight:800}
+.intro-block{padding:30px 9px 18px}.intro-block h2{font-weight:800;letter-spacing:-.8px;font-size:30px}.intro-block p{max-width:880px;color:#52657b}
+.eyebrow{font-size:10px;letter-spacing:2.3px;color:#008d91;font-weight:800;margin-bottom:10px}
+.bslib-card{box-shadow:0 9px 27px #0b27460b;border:1px solid #e4eaf0!important;border-radius:14px!important}
+.card-header{background:#fff!important;font-size:14px;font-weight:750;color:#12233f;padding:17px 20px!important}
+.notice-card{margin-top:10px}.notice-card li{margin-bottom:8px}.side-heading{font-size:11px;font-weight:800;letter-spacing:1.3px;color:#008d91;padding-bottom:12px}
+.micro{font-size:12px;color:#697c90;padding:6px 15px 20px}.footer-note{text-align:center;font-size:11px;color:#76869a;padding:24px}

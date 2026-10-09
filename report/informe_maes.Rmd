@@ -1,0 +1,71 @@
+---
+title: "MAEs | Demanda y capacidad: evidencia y escenarios"
+author: "Propuesta académica independiente — Guido Armas"
+date: "2026-10-09"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+    theme: flatly
+    code_folding: hide
+params:
+  plazas_adicionales: 2
+  matriculados_hipoteticos: 30
+  espera_hipotetica: 10
+  aceptacion_hipotetica: 0.8
+---
+
+```{r inicio, include=FALSE}
+knitr::opts_chunk$set(echo=FALSE,warning=FALSE,message=FALSE)
+source('R/calculos.R', encoding='UTF-8')
+h <- read_historico()
+s <- simular_capacidad(params$plazas_adicionales,params$matriculados_hipoteticos,
+                      params$espera_hipotetica,params$aceptacion_hipotetica)
+```
+
+# Decisión propuesta
+
+**Estudiar, sin prejuzgar su autorización, una ampliación acotada de capacidad**, condicionada a disponibilidad docente, calidad académica y respeto estricto a los procedimientos del DUA. No se solicita alterar el orden de las listas de espera.
+
+> **Distinción crítica:** la serie histórica procede del autoinforme oficial; la ocupación y la lista de espera de 2026/27 no están disponibles. Los parámetros de esta simulación son hipótesis, no datos actuales.
+
+# Evidencia histórica
+
+```{r tabla}
+knitr::kable(h[, c('curso','plazas','matricula_final','solicitudes_primera_opcion','provisional')],
+ col.names=c('Curso','Oferta','Matrícula final','Solicitudes 1.ª opción','Provisional'))
+```
+
+El indicador IN03 pasa de 64 a **107** solicitudes en primera opción en los cinco cursos observados; 2024/25 es provisional. La matrícula final en 2024/25 figura como **34 frente a 30 plazas de oferta**. Son magnitudes distintas y no prueban vacantes presentes.
+
+```{r grafico1, fig.width=9, fig.height=4}
+barplot(h$solicitudes_primera_opcion,names.arg=h$curso,col='#1E4B79',
+        border=NA,ylab='Solicitudes en primera opción',main='Evolución histórica de la demanda')
+```
+
+# Escenario de sensibilidad, no pronóstico
+
+| Parámetro | Hipótesis |
+|---|---:|
+| Plazas adicionales | `r params$plazas_adicionales` |
+| Matriculados actualmente | `r params$matriculados_hipoteticos` |
+| Personas en lista ordinaria | `r params$espera_hipotetica` |
+| Aceptación de ofertas en lista ordinaria | `r round(100*params$aceptacion_hipotetica)`% |
+| Remanente teórico tras atender lista | **`r s$remanente_teorico_tras_lista`** |
+
+El remanente es solo un resultado aritmético; no modela cupos, fases, adjudicaciones, desistimientos reales, autorizaciones ni derecho individual de ingreso.
+
+# Requisitos previos a una decisión
+
+1. Validar ocupación actual y personas pendientes de formalizar matrícula.
+2. Validar el tamaño y prioridad de la lista ordinaria en las adjudicaciones relevantes.
+3. Analizar capacidad docente, espacios, prácticas y financiación.
+4. Confirmar la habilitación y procedimiento institucional antes de cualquier ampliación.
+5. Aplicar las reglas de orden de adjudicación del DUA.
+
+# Fuentes verificables
+
+- Universidad de Málaga. **Autoinforme de seguimiento MAEs, convocatoria 2025/26**, indicador IN01, IN02, IN03, página 17: <https://www.uma.es/facultad-de-ciencias-economicas-y-empresariales/navegador_de_ficheros/Ciencias_Economicas_y_Empresariales/descargar/Calidad/MAEs/AutoinformeSeguim_MAES_25-26.pdf>
+- Junta de Andalucía. **Procedimiento de admisión a másteres, curso 2026/27**, artículo 14: <https://www.juntadeandalucia.es/boja/2026/84/46>
+
+*Documento no oficial; no contiene datos personales ni cifras inventadas presentadas como hechos.*
